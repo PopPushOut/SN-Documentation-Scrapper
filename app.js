@@ -13,7 +13,6 @@ const extractData = async url => {
   return await h4.jsonValue();
 };
 
-
 const browser = await puppeteer.launch();
 const page = await browser.newPage();
 const rootUrl = 'https://developer.servicenow.com/app.do#!/api_doc?v=madrid&id=no-namespace';
@@ -30,9 +29,9 @@ const noNamespaceLinks = await page.evaluateHandle(() => {
 const ids = await noNamespaceLinks.jsonValue();
 
 for (const id of ids) {
-  console.log(id);
+  //console.log(id);
   const url = `https://developer.servicenow.com/app.do#!/api_doc?v=madrid&id=${id}`;
   const data = await extractData(url);
   console.log(data);
 }
-})();
+})(); 
